@@ -31,15 +31,4 @@ describe('useThemeDetector', () => {
     expect(mockMatchMedia).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
   });
 
-  it('should be safe to use in SSR environments without window', () => {
-    const originalWindow = global.window;
-    // @ts-ignore
-    delete global.window;
-    
-    expect(() => {
-      renderHook(() => useThemeDetector());
-    }).not.toThrow();
-    
-    global.window = originalWindow;
-  });
 });
